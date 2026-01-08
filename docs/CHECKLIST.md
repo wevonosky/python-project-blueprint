@@ -50,7 +50,7 @@ install your project using the package manager of your choice:
 
 - [ ] **USER:** Install dependencies using **pip**, **uv**, or **poetry**:
   - `pip install -e ".[dev]"`.
-  - `uv install -e ".[dev]"`.
+  - `uv pip install -e ".[dev]"`.
   - `poetry install --extras dev`.
 - [ ] **USER:** Run `pre-commit install`.
 - [ ] **USER:** Run the application `python -m <package_name>.main`.
