@@ -1,10 +1,37 @@
 # Python Project Blueprint
 
+[![Mypy][mypy-badge]](https://mypy-lang.org)
+[![Ruff][ruff-badge]](https://github.com/astral-sh/ruff)
+[![Pytest][pytest-badge]](https://docs.pytest.org/en/stable/)
+[![Bandit][bandit-badge]](https://github.com/PyCQA/bandit)
+[![Snyk][snyk-badge]](https://snyk.io)
 [![Python Version][python-badge]](https://www.python.org/)
 [![License][license-badge]](LICENSE.md)
 
-[python-badge]: https://img.shields.io/badge/python-3.12%2B-blue?color=4180b2
-[license-badge]: https://img.shields.io/github/license/pymetheus/python-project-blueprint?color=4180b2
+[![Pre-commit][pre-commit-badge]](https://github.com/pre-commit/pre-commit)
+[![PR Checks][pr-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/pr-checks.yml)
+[![Security][security-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml)
+[![CI][ci-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml)
+[![CD][cd-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/cd.yml)
+
+[![Bootstrap][bootstrap-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/bootstrap.yml)
+[![Template][use-template-badge]](https://github.com/new?template_name=python-project-blueprint&template_owner=Pymetheus)
+
+[mypy-badge]: https://img.shields.io/badge/mypy-checked-4180b1
+[ruff-badge]: https://img.shields.io/badge/ruff-linted-4180b1
+[pytest-badge]: https://img.shields.io/badge/pytest-tested-4180b1
+[bandit-badge]: https://img.shields.io/badge/bandit-scanned-4180b1
+[snyk-badge]: https://img.shields.io/badge/snyk-scanned-4180b1
+[python-badge]: https://img.shields.io/badge/python-3.12%2B-blue?color=4180b1
+[license-badge]: https://img.shields.io/github/license/Pymetheus/python-project-blueprint?color=4180b1
+[pre-commit-badge]: https://img.shields.io/badge/pre--commit-enabled-31c553?logo=pre-commit&logoColor=white
+[pr-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/pr-checks.yml/badge.svg
+[security-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml/badge.svg
+[ci-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml/badge.svg
+[cd-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/cd.yml/badge.svg
+[bootstrap-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/bootstrap.yml/badge.svg
+[use-template-badge]: https://img.shields.io/badge/Use%20this%20template-006222
+
 
 A **production-ready Python project template** designed to remove setup friction and enforce best practices from the very first commit.
 
