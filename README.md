@@ -13,6 +13,7 @@
 [![Security][security-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml)
 [![CI][ci-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml)
 [![CD][cd-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/cd.yml)
+[![CD][codecov-badge]](https://codecov.io/github/Pymetheus/python-project-blueprint)
 
 [![Bootstrap][bootstrap-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/bootstrap.yml)
 [![Template][use-template-badge]](https://github.com/new?template_name=python-project-blueprint&template_owner=Pymetheus)
@@ -29,6 +30,7 @@
 [security-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml/badge.svg
 [ci-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml/badge.svg
 [cd-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/cd.yml/badge.svg
+[codecov-badge]: https://codecov.io/github/Pymetheus/python-project-blueprint/graph/badge.svg?token=Y4K5R5F457
 [bootstrap-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/bootstrap.yml/badge.svg
 [use-template-badge]: https://img.shields.io/badge/Use%20this%20template-006222
 
@@ -68,6 +70,7 @@ By establishing structure, tooling, and automation upfront, it reduces the need 
 
 - **Quality & Safety by Default**
   - Coverage enforcement with `pytest`
+  - Cloud-based coverage reporting and visualization with `Codecov`
   - Minimum 80% coverage threshold
   - Fast linting and formatting via `ruff`
   - Strict static typing with `mypy`

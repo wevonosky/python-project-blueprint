@@ -159,6 +159,15 @@ jobs:
             .log/coverage/htmlcov
             .log/coverage/coverage.xml
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          override_pr: ${{ github.event.pull_request.number }}
+          slug: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   conflict-check:
     name: Check for Merge Conflicts
     runs-on: ubuntu-latest

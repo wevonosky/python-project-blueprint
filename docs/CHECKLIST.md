@@ -21,9 +21,16 @@ Follow this checklist to set up your own Python project with the Python Project 
 ### Snyk Account
 - [ ] **USER:** Create a [Snyk account](https://app.snyk.io/login) if not already present.
 - [ ] **USER:** Add `SNYK_TOKEN` as a **new repository secret** under **Settings** → **Secrets and variables** → **Actions** & **Dependabot**. (found under https://app.snyk.io/account → **Auth Token**)
-- [ ] **USER:** Add `SNYK_ORG_ID` as a **new repository secret** under **Settings** → **Secrets and variables** → **Actions** & **Dependabot**. (found under https://app.snyk.io/org/ <your-org> /manage/settings → **Organization ID**)
+- [ ] **USER:** Add `SNYK_ORG_ID` as a **new repository secret** under **Settings** → **Secrets and variables** → **Actions** & **Dependabot**. (found under https://app.snyk.io/org/ your-org /manage/settings → **Organization ID**)
 
 > **Note:** *If you don't want to use Snyk for security scanning, delete or replace the `snyk-security-scan` job in `.github/workflows/security.yml`.*
+
+### Codecov
+- [ ] **USER:** Create a [Codecov account](https://app.codecov.io/login) if not already present.
+- [ ] **USER:** Add `CODECOV_TOKEN` as a **new repository secret** under **Settings** → **Secrets and variables** → **Actions** & **Dependabot**. (found under https://app.codecov.io/gh/ your-org / your-repo /new → **Step 3: add token**)
+- [ ] **USER:** Install the Codecov App on your GitHub organization and give repository access with `Only select repositories`.
+
+> **Note:** *If you don't want to use Codecov for PR comments and testing visualization, delete the `codecov.yml` file and the `Upload coverage reports to Codecov` step in `.github/workflows/ci.yml` and `.github/workflows/pr-checks.yml`.*
 
 ### TestPyPI (Optional)
 - [ ] **USER:** Create a [TestPyPI account](https://test.pypi.org/account/register/) if not already present.
