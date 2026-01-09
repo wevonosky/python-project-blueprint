@@ -9,19 +9,19 @@ It reduces setup and automation overhead, allowing teams to focus on application
 
 The **Python Project Blueprint** comes with built-in:
 
-| Feature                      | Description                                                                                                                                                    |
-|:-----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Project Management**       | `pyproject.toml` as the centralized configuration for packaging, tooling, metadata and dependency management.                                                  |
-| **Config Management**        | `pydantic-settings` for type-safe environment variable loading and validation.                                                                                 |
-| **Structured Logging**       | `structlog` integration for JSON streams (production) and colored console output (development).                                                                |
-| **Professional Layout**      | `src/` directory structure to ensure package integrity and prevent local import conflicts.                                                                     |
-| **Comprehensive Testing**    | `pytest` paired with coverage reporting and enforced minimum thresholds for deep visibility into code health.                                                  |
-| **Static Analysis**          | `ruff` for linting/formatting and `mypy` for strict static type checking.                                                                                      |
-| **Automated Security**       | `Snyk` (OSS) and `bandit` (SAST) integrated to scan for vulnerabilities and leaked secrets.                                                                    |
-| **Standardized Governance**  | Automated label synchronization, Issue templates, and Pull Request templates.                                                                                  |
-| **Local Automation**         | `.pre-commit-config.yaml` for linting, formatting, and security checks.                                                                                        |
-| **CI/CD Pipeline**           | `pr-checks`, `ci`, `cd`, and `security` GitHub Actions workflows.                                                                                              |
-| **Instant Bootstrapping**    | A `bootstrap.yml` GitHub Action to rebrand and initialize the repository in seconds.                                                                           |
+| Feature                      | Description                                                                                                                             |
+|:-----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+| **Project Management**       | `pyproject.toml` as the centralized configuration for packaging, tooling, metadata and dependency management.                           |
+| **Config Management**        | `pydantic-settings` for type-safe environment variable loading and validation.                                                          |
+| **Structured Logging**       | `structlog` integration for JSON streams (production) and colored console output (development).                                         |
+| **Professional Layout**      | `src/` directory structure to ensure package integrity and prevent local import conflicts.                                              |
+| **Comprehensive Testing**    | `pytest` and `Codecov` integration with coverage reporting to enforce coverage thresholds and ensure deep visibility into code health.  |
+| **Static Analysis**          | `ruff` for linting/formatting and `mypy` for strict static type checking.                                                               |
+| **Automated Security**       | `Snyk` (OSS) and `bandit` (SAST) integrated to scan for vulnerabilities and leaked secrets.                                             |
+| **Standardized Governance**  | Automated label synchronization, Issue templates, and Pull Request templates.                                                           |
+| **Local Automation**         | `.pre-commit-config.yaml` for linting, formatting, and security checks.                                                                 |
+| **CI/CD Pipeline**           | `pr-checks`, `ci`, `cd`, and `security` GitHub Actions workflows.                                                                       |
+| **Instant Bootstrapping**    | A `bootstrap.yml` GitHub Action to rebrand and initialize the repository in seconds.                                                    |
 
 > **Note on Bootstrapping Process:**
 >
@@ -111,6 +111,7 @@ python-project-blueprint/
 ├── .dockerignore                   # Docker build exclusions
 ├── .gitignore                      # Git exclusions
 ├── .pre-commit-config.yaml         # Local linting/security gates
+├── codecov.yml                     # Codecov configuration file
 ├── LICENSE.md                      # Usage permissions
 ├── pyproject.toml                  # Central configuration hub (Dependencies & Tools)
 └── README.md                       # Project landing page
@@ -193,6 +194,7 @@ By using these tools, the project ensures that every contribution is vetted befo
 To scale collaboration and maintain a clean repository, the following tools are integrated:
 
 * **Standardized Entry Points:** `ISSUE_TEMPLATE/` and `PULL_REQUEST_TEMPLATE.md` ensure that every **bug report** or **feature request** contains the necessary technical context (logs, environment info, reproduction steps).
+* **Automated Quality Gates:** The `pr-checks.yml` workflow uploads test results to `Codecov` to enforce coverage thresholds and provide automated PR comments that visualize testing gaps.
 * **Automated Labeling (`label-sync.yml`):** Automatically synchronizes repository labels based on a central `labels.yml` file, keeping the project organized and searchable.
 * **Access Control (`CODEOWNERS`):** Defines which team members are responsible for specific parts of the codebase, automatically assigning them as reviewers for relevant Pull Requests.
 
@@ -248,7 +250,7 @@ This workflow ensures that every contribution meets the project's quality, stabi
 >
 > **When:** On Pull Requests to `main` branch.
 >
-> **Focus:** Static analysis (linting/types), unit testing, and metadata validation.
+> **Focus:** Static analysis (linting/types), unit testing, coverage reporting, and metadata validation.
 
 ````yaml
 name: PR Checks
@@ -269,14 +271,14 @@ jobs:
   pr-description-check: # Guarantees context for every code change.
   lint:                 # Enforces style via Ruff
   mypy:                 # Verifies type safety
-  test:                 # Executes unit tests and generates coverage artifacts.
+  test:                 # Executes unit tests and uploads coverage to Codecov.
   conflict-check:       # Detects merge conflicts early.
   size-check:           # Warns if large files are being detected.
   pr-checks-summary:    # Provides a summary of the previous jobs.
   pr-labeler:           # Automates project board organization.
 ````
 
-> **Note:** *Detailed test coverage artifacts are available under the Actions > Artifacts tab for every successful run.*
+> **Note:** *Test coverage reports are automatically uploaded to Codecov for visualization. Raw artifacts are also available under the Actions > Artifacts tab.*
 
 
 **PR Guidelines:** This project uses [Conventional Commits](https://www.conventionalcommits.org/) for PR titles.
@@ -288,6 +290,8 @@ jobs:
 **PR Title Examples:**
 - ✅ `feat: add user login`
 - ❌ `Updated code` (missing type)
+
+**PR Codecov Report:** Provides an automated comment in every PR with a coverage difference and impact analysis.
 
 **PR Types & Labeling:**
 
@@ -315,9 +319,9 @@ The CI process performs a deep validation to ensure that the integrated code is 
 
 > **Purpose:** Final verification and build preparation.
 >
-> **When:** Pushes to main
+> **When:** Pushes to the `main` branch.
 >
-> **Focus:** Extensive testing, distribution builds, and smoke testing
+> **Focus:** Extensive testing, distribution builds, and smoke testing.
 
 ````yaml
 name: CI
@@ -330,12 +334,12 @@ on:
 
 jobs:
   verify-version:      # Preventing deployment collisions.
-  test:                # Executes the complete test suite with coverage.
+  test:                # Executes the complete test suite with coverage and uploads report to Codecov.
   build-distribution:  # Packages the code into a distributable format.
   smoke-test:          # Proves the package is installable and functional.
 ````
 
-> **Note:** *Detailed test coverage artifacts are available under the Actions > Artifacts tab for every successful run.*
+> **Note:** *Test coverage reports are automatically uploaded to Codecov for visualization. Raw artifacts are also available under the Actions > Artifacts tab.*
 
 ---
 
@@ -343,11 +347,11 @@ jobs:
 This workflow automates the final stage of the software lifecycle: **Delivery**.
 By triggering only after a completed CI run, it ensures that only fully vetted and smoke-tested code is ever published to the ecosystem.
 
-> **Purpose:** Production deployments
+> **Purpose:** Production deployments.
 >
-> **When:** On completed `CI` workflow run
+> **When:** On completed `CI` workflow run.
 >
-> **Focus:** Publish package and create release
+> **Focus:** Publish package and create release.
 
 ````yaml
 name: CD
@@ -372,11 +376,11 @@ jobs:
 This workflow acts as an automated security audit, scanning your codebase and dependencies for vulnerabilities before any code is merged.
 It ensures the project remains compliant with basic security standards.
 
-> **Purpose:** Security audits & vulnerability scanning
+> **Purpose:** Security audits & vulnerability scanning.
 >
-> **When:** On PRs
+> **When:** On PRs.
 >
-> **Focus:** Dependencies, code security, SAST
+> **Focus:** Dependencies, code security, SAST.
 
 ````yaml
 name: Security Scan
@@ -466,12 +470,12 @@ The `tests/` directory is structured to provide high coverage with minimal frict
 * **`test_main.py`**, **`test_config.py` & `test_logger.py`**: Baseline tests that ensure the source code is functioning correctly.
 
 ### Quality Metrics & Artifacts
-The testing workflow is integrated with the `.log/` directory to provide deep insights into code health:
+The testing workflow is integrated with the `.log/` directory and `Codecov` to provide deep insights into code health:
 
 * **Automated Coverage**: Every test run generates a `.coverage` report, allowing you to see exactly which lines of code are untested.
 * **Coverage Threshold**: The project enforces a **minimum coverage of 80%**. If code coverage falls below this mark, the `pr-checks` workflow will fail, preventing merges that reduce test quality.
 
-### Running Tests
+### Running Tests Locally
 Pytest is configured via `pyproject.toml` to include coverage reporting and verbose output by default.
 
 
@@ -479,6 +483,14 @@ Just run:
 ```bash
 pytest
 ```
+
+### Coverage Reporting with Codecov
+This project utilizes Codecov for cloud-based coverage analysis.
+This service transforms raw test data into actionable insights during the review process via the `codecov.yml` configuration.
+* **PR Integration**: Delivers an automated Codecov Report to every PR, featuring coverage deltas and impact analysis.
+* **Automated Uploads**: Every time tests are executed in `pr-checks.yml` or `ci.yml`, reports are automatically synced to the Codecov dashboard.
+* **Informational Patch**: Provides targeted feedback on the coverage of only the changed lines within a Pull Request.
+* **Visualizations**: Offers interactive charts on the Codecov dashboard to identify complex, low-coverage modules.
 
 ---
 
