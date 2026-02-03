@@ -19,7 +19,7 @@ The **Python Project Blueprint** comes with built-in:
 | **Static Analysis**          | `ruff` for linting/formatting and `mypy` for strict static type checking.                                                               |
 | **Automated Security**       | `Snyk` (OSS) and `bandit` (SAST) integrated to scan for vulnerabilities and leaked secrets.                                             |
 | **Standardized Governance**  | Automated label synchronization, Issue templates, and Pull Request templates.                                                           |
-| **Local Automation**         | `.pre-commit-config.yaml` for linting, formatting, and security checks.                                                                 |
+| **Local Automation**         | `.pre-commit-config.yaml` for linting, formatting, and security checks with `prek`.                                                     |
 | **CI/CD Pipeline**           | `pr-checks`, `ci`, `cd`, and `security` GitHub Actions workflows.                                                                       |
 | **Instant Bootstrapping**    | A `bootstrap.yml` GitHub Action to rebrand and initialize the repository in seconds.                                                    |
 
@@ -110,7 +110,7 @@ python-project-blueprint/
 │   └── test_main.py
 ├── .dockerignore                   # Docker build exclusions
 ├── .gitignore                      # Git exclusions
-├── .pre-commit-config.yaml         # Local linting/security gates
+├── .pre-commit-config.yaml         # Local linting/security gates with prek
 ├── codecov.yml                     # Codecov configuration file
 ├── LICENSE.md                      # Usage permissions
 ├── pyproject.toml                  # Central configuration hub (Dependencies & Tools)
@@ -186,7 +186,7 @@ The logger (configured in `src/package_name/utils/logger.py`) includes several p
 ---
 
 ## GitHub Actions & Automation
-This project leverages GitHub Actions and pre-commit hooks to automate the entire development lifecycle, ensuring that high standards are maintained by default.
+This project leverages GitHub Actions and prek hooks to automate the entire development lifecycle, ensuring that high standards are maintained by default.
 It houses the governance documents (templates) and the CI/CD pipelines (workflows) that enforce code quality, security, and release standards automatically.
 By using these tools, the project ensures that every contribution is vetted before it touches the `main` branch.
 
@@ -224,7 +224,7 @@ Where applicable, CI/CD workflows use `uv` for dependency installation and resol
 
 ---
 
-#### Pre-commit Workflow
+#### Prek Workflow
 The first line of defense for code quality.
 By running checks locally before every commit, we eliminate "fix style" commits and ensure a clean history.
 

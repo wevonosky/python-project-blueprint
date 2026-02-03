@@ -59,7 +59,7 @@ install your project using the package manager of your choice:
   - `pip install -e ".[dev]"`.
   - `uv pip install -e ".[dev]"`.
   - `poetry install --extras dev`.
-- [ ] **USER:** Run `pre-commit install`.
+- [ ] **USER:** Run `prek install`.
 - [ ] **USER:** Run the application `python -m <package_name>.main`.
 
 > **Note:** *Git must be installed, and you must be inside the cloned Git repository.*

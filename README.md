@@ -2,6 +2,7 @@
 
 # Python Project Blueprint
 
+[![Prek][prek-badge]](https://prek.j178.dev/)
 [![Mypy][mypy-badge]](https://mypy-lang.org)
 [![Ruff][ruff-badge]](https://github.com/astral-sh/ruff)
 [![Pytest][pytest-badge]](https://docs.pytest.org/en/stable/)
@@ -10,7 +11,6 @@
 [![Python Version][python-badge]](https://www.python.org/)
 [![License][license-badge]](LICENSE.md)
 
-[![Pre-commit][pre-commit-badge]](https://github.com/pre-commit/pre-commit)
 [![PR Checks][pr-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/pr-checks.yml)
 [![Security][security-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml)
 [![CI][ci-badge]](https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml)
@@ -22,6 +22,7 @@
 
 </div>
 
+[prek-badge]: https://img.shields.io/badge/prek-enabled-4180b1
 [mypy-badge]: https://img.shields.io/badge/mypy-checked-4180b1
 [ruff-badge]: https://img.shields.io/badge/ruff-linted-4180b1
 [pytest-badge]: https://img.shields.io/badge/pytest-tested-4180b1
@@ -29,7 +30,6 @@
 [snyk-badge]: https://img.shields.io/badge/snyk-scanned-4180b1
 [python-badge]: https://img.shields.io/badge/python-3.12%2B-blue?color=4180b1
 [license-badge]: https://img.shields.io/github/license/Pymetheus/python-project-blueprint?color=4180b1
-[pre-commit-badge]: https://img.shields.io/badge/pre--commit-enabled-31c553?logo=pre-commit&logoColor=white
 [pr-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/pr-checks.yml/badge.svg
 [security-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/security.yml/badge.svg
 [ci-badge]: https://github.com/Pymetheus/python-project-blueprint/actions/workflows/ci.yml/badge.svg
@@ -85,7 +85,7 @@ By establishing structure, tooling, and automation upfront, it reduces the need 
   - Dependency vulnerability scanning with `Snyk`
 
 - **Automated CI/CD**
-  - `pre-commit` hooks for local enforcement
+  - `prek` hooks for faster local enforcement
   - Workflows with fast dependency resolution using `uv`
   - Pull request gatekeeping workflows
   - CI verification and packaging
@@ -139,7 +139,7 @@ pip install -e ".[dev]"
 
 Set up local git hooks for formatting, linting, and security checks:
 ```bash
-pre-commit install
+prek install
 ```
 
 > **Note:** *Git must be installed, and you must be inside the cloned Git repository.*
