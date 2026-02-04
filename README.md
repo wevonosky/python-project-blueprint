@@ -136,8 +136,8 @@ Install the project in editable mode with development dependencies:
 # with pip
 pip install -e ".[dev]"
 
-# with uv
-uv sync --extra dev
+# with uv (dev included by default)
+uv sync
 
 # with poetry
 poetry install --extras dev
